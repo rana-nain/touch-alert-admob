@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".features.prank.PrankViewFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/my_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/round_keyboard_backspace"
+        app:navigationIconTint="@color/white"
+        app:title="Prank Sounds"
+        app:titleTextColor="@color/white" />
+
+    <FrameLayout
+        android:id="@+id/imageView7"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+
+        <ImageView
+            android:id="@+id/imageViewPrank"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/todo"
+            android:padding="@dimen/_35sdp"
+            android:src="@drawable/alarm" />
+
+    </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:contentDescription="@string/play_pause"
+        android:src="@drawable/round_play_arrow_24"
+        app:backgroundTint="@color/light_pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/textView9213"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:fontFamily="@font/inter_medium"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/volume"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderVolume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:value="50.0"
+        android:valueFrom="0.0"
+        android:valueTo="100.0"
+        app:labelBehavior="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9213"
+        app:thumbColor="#DA5488"
+        app:thumbHeight="@dimen/_20sdp"
+        app:trackColorActive="@color/light_pink"
+        app:trackColorInactive="@color/gray_2"
+        app:trackHeight="@dimen/_6sdp" />
+
+    <!--    <TextView
+            android:id="@+id/textViewDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/duration"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:visibility="gone"
+            app:checkedChip="@+id/chip1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDuration"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip1"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15s"
+                android:textColor="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@drawable/chip_background_color"
+                app:chipMinTouchTargetSize="48dp"
+                app:ensureMinTouchTargetSize="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30s"
+                android:textColor="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@drawable/chip_background_color"
+                app:chipMinTouchTargetSize="48dp"
+                app:ensureMinTouchTargetSize="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip3"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1m"
+                android:textColor="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@drawable/chip_background_color"
+                app:chipMinTouchTargetSize="48dp"
+                app:ensureMinTouchTargetSize="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip4"
+                style="@style/Widget.Material3.Chip.Suggestion.Elevated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2m"
+                android:textColor="@color/chip_text_color_selector"
+                app:chipBackgroundColor="@drawable/chip_background_color"
+                app:chipMinTouchTargetSize="48dp"
+                app:ensureMinTouchTargetSize="true" />
+
+        </com.google.android.material.chip.ChipGroup>-->
+
+    <TextView
+        android:id="@+id/textView1002"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:fontFamily="@font/inter_bold"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/frequency"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sliderVolume" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1002">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp">
+
+            <RadioButton
+                android:id="@+id/radio_once"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:checked="true"
+                android:fontFamily="@font/inter_medium"
+                android:paddingStart="@dimen/_10sdp"
+                android:text="@string/once"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                android:theme="@style/MyRadioButton" />
+
+            <RadioButton
+                android:id="@+id/radio_loop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:fontFamily="@font/inter_medium"
+                android:paddingStart="@dimen/_10sdp"
+                android:text="@string/loop"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                android:theme="@style/MyRadioButton" />
+
+        </RadioGroup>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

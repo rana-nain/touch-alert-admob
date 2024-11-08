@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/my_primary"
+    tools:context=".screens.MainActivity"
+    tools:ignore="MergeRootFrame">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/background"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:contentDescription="@string/todo"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:background="@drawable/ic_bg_dashboard" />-->
+
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:backgroundTint="@android:color/transparent"
+        android:contentDescription="@string/todo"
+        android:padding="@dimen/_3sdp"
+        android:src="@drawable/ic_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+    <ImageView
+        android:id="@+id/animation_view"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:contentDescription="@string/todo"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/settings"
+        app:layout_constraintEnd_toStartOf="@+id/settings"
+        app:layout_constraintTop_toTopOf="@+id/settings"
+        tools:background="@drawable/ic_pro" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/welcome"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter"
+        android:text="@string/explore_the_app_and_enjoy"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/textView22"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_wave_hand"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/bannerContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/wallpaperLayoutWallpaper"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewWallpaper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerInside"
+                    tools:background="@drawable/ic_wallpaper_card_bg_dashboard" />
+
+                <TextView
+                    android:id="@+id/textView212433"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_bold"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/don_t_touch_nwallpapers"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <Button
+                    android:id="@+id/buttonWallpaper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:backgroundTint="@color/my_primary"
+                    android:maxLines="1"
+                    android:text="@string/open"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialTouchCardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/templateView"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewAlarms"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="fitXY"
+                    tools:background="@drawable/ic_touch_card_bg_dashboard" />
+
+                <TextView
+                    android:id="@+id/textViewTouchAlert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/don_t_touch_nmy_phone_alarms"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/buttonTouchAlert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/open"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/white" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewPlug"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/templateView"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewPlug"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="fitXY"
+                    tools:background="@drawable/ic_plug_card_bg_dashboard" />
+
+                <TextView
+                    android:id="@+id/textViewPlug"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/unplug_charging_nalert"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/buttonPlug"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:maxLines="1"
+                    android:text="@string/open"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/white" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewPocketMode"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewPlug"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewPocketMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="fitXY"
+                    tools:background="@drawable/ic_pocket_card_bg_dashboard" />
+
+                <TextView
+                    android:id="@+id/textViewPocketMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/pocket_mode_ndetection"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/buttonPocketMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:text="@string/open"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/white" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewBattery"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTouchCardView"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewBattery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="fitXY"
+                    tools:background="@drawable/ic_charge_card_bg_dashboard" />
+
+                <TextView
+                    android:id="@+id/textViewBattery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/battery_full_ndetection"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/buttonBattery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:maxLines="1"
+                    android:text="@string/open"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/white" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewWhistle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewBattery"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewWhistle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="fitXY"
+                    tools:background="@drawable/ic_wifi_bg" />
+
+                <TextView
+                    android:id="@+id/textViewWhistle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/wi_fi_detection"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/buttonWhistle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:maxLines="1"
+                    android:text="@string/open"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/white" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialClapCardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewPocketMode"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewClap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="fitXY"
+                    tools:background="@drawable/ic_clap_card_bg_dashboard" />
+
+                <TextView
+                    android:id="@+id/textViewClap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_medium"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/find_my_phone_nby_clap"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/buttonClap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/open"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/white" />
+                
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.appscentric.donot.touch.myphone.antitheft.monetization.nativeads.TemplateView
+                android:id="@+id/templateView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                app:gnt_template_type="@layout/gnt_small_template_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/wallpaperLayoutWallpaper" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/prankLayoutPrank"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:background="@drawable/ic_prank_card_bg_dashboard"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewWhistle">
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/prank_fool_your_nfriends"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonPrank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_35sdp"
+                    android:text="@string/prank_now"
+                    app:iconTint="@null"
+                    app:icon="@drawable/ic_premium"
+                    app:iconGravity="end"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView25"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView25"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/bannerContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

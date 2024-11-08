@@ -1,0 +1,42 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.appscentric.donot.touch.myphone.antitheft",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 41,
+      "versionName": "1.4.1",
+      "outputFile": "Touch-Alert-App__1.4.1__30-10__19h3.apk"
+    }
+  ],
+  "elementType": "File",
+  "baselineProfiles": [
+    {
+      "minApi": 28,
+      "maxApi": 30,
+      "baselineProfiles": [
+        "baselineProfiles/1/Touch-Alert-App__1.4.1__30-10__19h3.dm"
+      ]
+    },
+    {
+      "minApi": 31,
+      "maxApi": 2147483647,
+      "baselineProfiles": [
+        "baselineProfiles/0/Touch-Alert-App__1.4.1__30-10__19h3.dm"
+      ]
+    }
+  ],
+  "minSdkVersionForDexing": 26
+}

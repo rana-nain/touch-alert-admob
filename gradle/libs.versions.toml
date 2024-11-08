@@ -1,0 +1,90 @@
+[versions]
+agp = "8.7.2"
+appUpdate = "2.1.0"
+billing = "7.1.1"
+fragmentKtx = "1.8.4"
+glide = "4.16.0"
+guava = "32.0.1-jre"
+kotlin = "1.9.23"
+koinAndroid = "3.3.2"
+iosSwitchview = "1.0.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+kotlinxCoroutinesCore = "1.8.1"
+listenablefuture = "9999.0-empty-to-avoid-conflict-with-guava"
+material = "1.12.0"
+activity = "1.9.3"
+constraintlayout = "2.1.4"
+pagingRuntime = "3.3.2"
+pinView = "1.0.0"
+review = "2.0.2"
+playServicesAds = "23.4.0"
+sdp = "1.1.1"
+lottieVersion = "6.4.0"
+dotsindicator = "5.0"
+showcaseview = "1.4.1"
+lifecycle = "2.2.0"
+lifecycleProcess = "2.8.6"
+easylocale = "v1.0.3"
+firebaseCrashlytics = "19.2.1"
+gradle = "8.7.2"
+googleServices = "4.4.2"
+firebaseCrashlyticsGradle = "3.0.2"
+firebaseAnalytics = "22.1.2"
+googleGmsGoogleServices = "4.4.2"
+firebaseMessaging = "24.0.3"
+userMessagingPlatform = "3.0.0"
+leakcanaryAndroid = "2.8.1"
+lifecycleLivedataKtx = "2.8.6"
+lifecycleViewmodelKtx = "2.8.6"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
+app-update = { module = "com.google.android.play:app-update", version.ref = "appUpdate" }
+billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+listenablefuture = { module = "com.google.guava:listenablefuture", version.ref = "listenablefuture" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-sdp = { group = "com.intuit.sdp", name = "sdp-android", version.ref = "sdp" }
+androidx-ssp = { group = "com.intuit.ssp", name = "ssp-android", version.ref = "sdp" }
+pin-view = { module = "com.github.khaled2252:pin-view", version.ref = "pinView" }
+review = { module = "com.google.android.play:review", version.ref = "review" }
+play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieVersion" }
+dotsindicator = { group = "com.tbuonomo", name = "dotsindicator", version.ref = "dotsindicator" }
+showcaseview = { group = "com.github.mreram", name = "showcaseview", version.ref = "showcaseview" }
+lifecycle = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycle" }
+easylocale = { group = "com.github.ramt57", name = "EasyLocaleApp", version.ref = "easylocale" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+
+androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycleProcess" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
+firebase-crashlytics-gradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "userMessagingPlatform" }
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+ios-switchview = { module = "com.github.luongvo:iOS-SwitchView", version.ref = "iosSwitchview" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
