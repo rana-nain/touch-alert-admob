@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".features.intruder.dialog.PermissionDenyPopBottomFragment">
+
+    <ImageView
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:contentDescription="@string/todo"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/round_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/gray_2" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_90sdp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_deny_permission_raw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/close_btn" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:fontFamily="@font/inter_bold"
+        android:lineSpacingExtra="1sp"
+        android:text="Details"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        android:translationY="-0.32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:fontFamily="@font/inter"
+        android:lineSpacingExtra="1sp"
+        android:text="@string/anti_theft_cannot_monitor_failed_attempts"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:translationY="-0.32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardBackgroundColor="#FFECED"
+        app:layout_constraintTop_toBottomOf="@+id/details"
+        app:strokeColor="@android:color/transparent"
+        tools:layout_editor_absoluteX="13dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_12sdp"
+            android:fontFamily="@font/inter_medium"
+            android:gravity="center|start"
+            android:text="@string/your_privacy_and_security_are_our_top_priorities"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_10sdp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/allowPermissionBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/new_btn_bg"
+        android:text="@string/allow_access"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        app:backgroundTint="#44B678"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

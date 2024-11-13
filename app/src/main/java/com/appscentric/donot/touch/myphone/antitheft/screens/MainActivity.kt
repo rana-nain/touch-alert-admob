@@ -29,6 +29,7 @@ import com.appscentric.donot.touch.myphone.antitheft.dialog.PremiumFragment
 import com.appscentric.donot.touch.myphone.antitheft.dialog.SettingsFragment
 import com.appscentric.donot.touch.myphone.antitheft.features.battery.BatteryFullDetectionFragment
 import com.appscentric.donot.touch.myphone.antitheft.features.clap.ClapFragment
+import com.appscentric.donot.touch.myphone.antitheft.features.intruder.IntruderSelfieFragment
 import com.appscentric.donot.touch.myphone.antitheft.features.plug.ChargeFragment
 import com.appscentric.donot.touch.myphone.antitheft.features.pocket.PocketFragment
 import com.appscentric.donot.touch.myphone.antitheft.features.prank.PrankFragment
@@ -43,6 +44,7 @@ import com.appscentric.donot.touch.myphone.antitheft.singleton.SoundManager
 import com.appscentric.donot.touch.myphone.antitheft.utils.Constants
 import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_BATTERY
 import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_CLAP
+import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_INTRUDER
 import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_PLUG
 import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_POCKET
 import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_PRANK
@@ -133,8 +135,11 @@ class MainActivity : AppCompatActivity() {
             materialClapCardView.setOnClickListener { showClapScreenWithAd() }
             buttonClap.setOnClickListener { showClapScreenWithAd() }
 
-            materialCardViewWhistle.setOnClickListener { showWhistleScreenWithAd() }
-            buttonWhistle.setOnClickListener { showWhistleScreenWithAd() }
+            wallpaperLayoutWifi.setOnClickListener { showWhistleScreenWithAd() }
+            buttonWifi.setOnClickListener { showWhistleScreenWithAd() }
+
+            materialCardViewIntruder.setOnClickListener { showIntruderSelfieScreenWithAd() }
+            buttonIntruder.setOnClickListener { showIntruderSelfieScreenWithAd() }
 
             animationView.setOnClickListener { showPremiumPopup() }
         }
@@ -169,6 +174,14 @@ class MainActivity : AppCompatActivity() {
         playClickSound(EVENT_DASHBOARD_BATTERY)
         fun navigate() =
             BatteryFullDetectionFragment().show(supportFragmentManager, "BatteryFragment")
+
+        showAdWithNavigation(navigate())
+    }
+
+    private fun showIntruderSelfieScreenWithAd() {
+        playClickSound(EVENT_DASHBOARD_INTRUDER)
+        fun navigate() =
+            IntruderSelfieFragment().show(supportFragmentManager, "IntruderSelfieFragment")
 
         showAdWithNavigation(navigate())
     }
@@ -221,7 +234,8 @@ class MainActivity : AppCompatActivity() {
             loadImage(R.drawable.ic_pocket_card_bg_dashboard, imageViewPocketMode)
             loadImage(R.drawable.ic_plug_card_bg_dashboard, imageViewPlug)
             loadImage(R.drawable.ic_charge_card_bg_dashboard, imageViewBattery)
-            loadImage(R.drawable.ic_wifi_bg, imageViewWhistle)
+            loadImage(R.drawable.ic_intruder_selfie, imageViewIntruder)
+            loadImage(R.drawable.ic_wifi_bg, imageViewWifi)
             loadImage(R.drawable.ic_clap_card_bg_dashboard, imageViewClap)
         }
     }

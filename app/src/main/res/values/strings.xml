@@ -91,8 +91,8 @@
     <string name="alarm_nine" translatable="false">Sound 9</string>
 
     <string name="apply_changes" translatable="false">Apply Changes</string>
-    <string name="permission_required" >Permission Required</string>
-    <string name="this_app_needs_permission_to_use_this_feature_you_can_grant_them_in_app_settings" >This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="this_app_needs_permission_to_use_this_feature_you_can_grant_them_in_app_settings">This app needs permission to use this feature. You can grant them in app settings.</string>
     <string name="app_settings">App Settings</string>
     <string name="todo" translatable="false">TODO</string>
     <string name="touch_sound">Touch Sound</string>
@@ -178,4 +178,15 @@
     <string name="are_you_sure_you_want_to_enable_touch_alert_detection_mode">Are you sure you want to enable Touch Alert Detection mode?</string>
     <string name="update_clap_detection_state">Update Clap Detection State</string>
     <string name="are_you_sure_you_want_to_enable_clap_detection_mode">Are you sure you want to enable Clap Detection mode?</string>
+
+    <string name="intruder_nselfie">Intruder\nSelfie</string>
+    <string name="get_a_selfie_snapshot">Get a selfie snapshot of anyone attempting to unlock your phone without permission.</string>
+    <string name="you_can_review_all_unauthorized">You can review all unauthorized attempts in a secure folder, and even set up instant alerts to notify you of potential threats in real time.</string>
+    <string name="images_history">Images History</string>
+    <string name="screen_overlay">Screen Overlay</string>
+    <string name="granting_admin_rights_enable">Granting admin rights enables Anti-theft to monitor failed lock screen attempts and capture intruder selfies, enhancing your device\'s security against unauthorized access.</string>
+    <string name="enable_intruder_detection_and_keep_your_device">Enable intruder detection and keep your device secure by granting admin access to activate protective features.</string>
+    <string name="allow_access">Allow access</string>
+    <string name="your_privacy_and_security_are_our_top_priorities">Your privacy and security are our top priorities. We don’t collect or store your data, it\'s only used to alert you to potential security threats and safeguard your device.</string>
+    <string name="anti_theft_cannot_monitor_failed_attempts">Anti-Theft cannot monitor failed attempts or capture intruder selfies without admin access, limiting its ability to fully secure your device. For complete protection, please enable admin access.</string>
 </resources>

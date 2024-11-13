@@ -2,13 +2,13 @@
 agp = "8.7.2"
 appUpdate = "2.1.0"
 billing = "7.1.1"
-fragmentKtx = "1.8.4"
+fragmentKtx = "1.8.5"
 glide = "4.16.0"
 guava = "32.0.1-jre"
 kotlin = "1.9.23"
 koinAndroid = "3.3.2"
 iosSwitchview = "1.0.0"
-coreKtx = "1.13.1"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -17,17 +17,18 @@ kotlinxCoroutinesCore = "1.8.1"
 listenablefuture = "9999.0-empty-to-avoid-conflict-with-guava"
 material = "1.12.0"
 activity = "1.9.3"
-constraintlayout = "2.1.4"
+constraintlayout = "2.2.0"
 pagingRuntime = "3.3.2"
 pinView = "1.0.0"
 review = "2.0.2"
-playServicesAds = "23.4.0"
+playServicesAds = "23.5.0"
+roomRuntime = "2.6.0"
 sdp = "1.1.1"
 lottieVersion = "6.4.0"
 dotsindicator = "5.0"
 showcaseview = "1.4.1"
 lifecycle = "2.2.0"
-lifecycleProcess = "2.8.6"
+lifecycleProcess = "2.8.7"
 easylocale = "v1.0.3"
 firebaseCrashlytics = "19.2.1"
 gradle = "8.7.2"
@@ -36,15 +37,16 @@ firebaseCrashlyticsGradle = "3.0.2"
 firebaseAnalytics = "22.1.2"
 googleGmsGoogleServices = "4.4.2"
 firebaseMessaging = "24.0.3"
-userMessagingPlatform = "3.0.0"
+userMessagingPlatform = "3.1.0"
 leakcanaryAndroid = "2.8.1"
-lifecycleLivedataKtx = "2.8.6"
-lifecycleViewmodelKtx = "2.8.6"
+lifecycleLivedataKtx = "2.8.7"
+lifecycleViewmodelKtx = "2.8.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 app-update = { module = "com.google.android.play:app-update", version.ref = "appUpdate" }
 billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
@@ -88,3 +90,4 @@ ios-switchview = { module = "com.github.luongvo:iOS-SwitchView", version.ref = "
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+androidRoom = { id = "androidx.room", version.ref = "roomRuntime" }

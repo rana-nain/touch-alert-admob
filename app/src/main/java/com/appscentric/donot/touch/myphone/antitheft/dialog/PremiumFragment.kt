@@ -24,8 +24,6 @@ import com.appscentric.donot.touch.myphone.antitheft.databinding.FragmentPremium
 import com.appscentric.donot.touch.myphone.antitheft.manager.PreferencesManager
 import com.appscentric.donot.touch.myphone.antitheft.screens.Splash
 import com.appscentric.donot.touch.myphone.antitheft.singleton.SoundManager
-import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_PREMIMUM
-import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.EVENT_DASHBOARD_WHISTLE
 import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.SKU_ID_ADS
 import com.appscentric.donot.touch.myphone.antitheft.utils.Utility.Companion.customFirebaseEvent
 import com.bumptech.glide.Glide

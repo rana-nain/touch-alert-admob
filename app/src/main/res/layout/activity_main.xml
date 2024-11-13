@@ -9,16 +9,16 @@
     tools:context=".screens.MainActivity"
     tools:ignore="MergeRootFrame">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/background"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:contentDescription="@string/todo"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:background="@drawable/ic_bg_dashboard" />-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/background"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:contentDescription="@string/todo"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        tools:background="@drawable/ic_bg_dashboard" />-->
 
     <ImageView
         android:id="@+id/settings"
@@ -113,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_marginHorizontal="@dimen/_10sdp"
+                android:visibility="visible"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -201,8 +202,8 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -330,7 +331,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardViewWhistle"
+                android:id="@+id/materialCardViewIntruder"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -342,26 +343,26 @@
                 app:strokeColor="@android:color/transparent">
 
                 <ImageView
-                    android:id="@+id/imageViewWhistle"
+                    android:id="@+id/imageViewIntruder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/todo"
                     android:scaleType="fitXY"
-                    tools:background="@drawable/ic_wifi_bg" />
+                    tools:background="@drawable/ic_intruder_selfie" />
 
                 <TextView
-                    android:id="@+id/textViewWhistle"
+                    android:id="@+id/textViewIntruder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_7sdp"
                     android:fontFamily="@font/inter_medium"
                     android:padding="@dimen/_5sdp"
-                    android:text="@string/wi_fi_detection"
+                    android:text="@string/intruder_nselfie"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_14sdp" />
 
                 <Button
-                    android:id="@+id/buttonWhistle"
+                    android:id="@+id/buttonIntruder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -415,7 +416,7 @@
                     android:text="@string/open"
                     android:textColor="@color/black"
                     app:backgroundTint="@color/white" />
-                
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.appscentric.donot.touch.myphone.antitheft.monetization.nativeads.TemplateView
@@ -424,11 +425,55 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginVertical="@dimen/_10sdp"
+                android:visibility="gone"
                 app:gnt_template_type="@layout/gnt_small_template_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/wallpaperLayoutWallpaper" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/wallpaperLayoutWifi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewIntruder"
+                app:strokeColor="@android:color/transparent">
+
+                <ImageView
+                    android:id="@+id/imageViewWifi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerInside"
+                    tools:background="@drawable/ic_wifi_bg" />
+
+                <TextView
+                    android:id="@+id/textViewWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:fontFamily="@font/inter_bold"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/don_t_touch_nwallpapers"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp" />
+
+                <Button
+                    android:id="@+id/buttonWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:backgroundTint="@color/white"
+                    android:maxLines="1"
+                    android:text="@string/open"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/prankLayoutPrank"
@@ -439,7 +484,7 @@
                 app:cardBackgroundColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardViewWhistle">
+                app:layout_constraintTop_toBottomOf="@+id/wallpaperLayoutWifi">
 
                 <TextView
                     android:id="@+id/textView25"
@@ -461,11 +506,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_35sdp"
                     android:text="@string/prank_now"
-                    app:iconTint="@null"
-                    app:icon="@drawable/ic_premium"
-                    app:iconGravity="end"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_10sdp"
+                    app:icon="@drawable/ic_premium"
+                    app:iconGravity="end"
+                    app:iconTint="@null"
                     app:layout_constraintEnd_toEndOf="@+id/textView25"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textView25"

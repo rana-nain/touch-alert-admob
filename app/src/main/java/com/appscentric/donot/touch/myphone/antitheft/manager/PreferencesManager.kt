@@ -24,6 +24,7 @@ class PreferencesManager(context: Context) {
         private const val IS_BATTERY = "isBattery"
         private const val IS_AUTO_CLOSE_APP = "isAutoCloseApp"
         private const val IS_POCKET_MODE_APP = "isPocketMode"
+        private const val IS_INTRUDER_MODE_APP = "isIntruderMode"
 
         private const val SELECTED_HOME_WALLPAPER_KEY = "selectedHomeWallpaper"
         private const val SELECTED_LOCK_WALLPAPER_KEY = "selectedLockWallpaper"
@@ -246,6 +247,15 @@ class PreferencesManager(context: Context) {
         set(isPocketMode) {
             with(sharedPreferences.edit()) {
                 putBoolean(IS_POCKET_MODE_APP, isPocketMode)
+                apply() // or commit() if you need an immediate write-back
+            }
+        }
+
+    var intruderSelfieMode: Boolean
+        get() = sharedPreferences.getBoolean(IS_INTRUDER_MODE_APP, false)
+        set(isPocketMode) {
+            with(sharedPreferences.edit()) {
+                putBoolean(IS_INTRUDER_MODE_APP, isPocketMode)
                 apply() // or commit() if you need an immediate write-back
             }
         }
