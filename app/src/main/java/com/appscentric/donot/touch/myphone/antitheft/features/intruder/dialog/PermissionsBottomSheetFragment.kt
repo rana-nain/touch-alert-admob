@@ -104,16 +104,21 @@ class PermissionsBottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         // Check if Camera permission is granted
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-            == PackageManager.PERMISSION_GRANTED
-        ) {
+        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        // Check if both Camera and storage permissions are granted
+        if (permissions.all { ContextCompat.checkSelfPermission(requireContext(), it) == PackageManager.PERMISSION_GRANTED }) {
             binding.switchCamera.isChecked = true
         }
 
         // Check if Storage permission (READ_EXTERNAL_STORAGE or READ_MEDIA_IMAGES) is granted
-        if (isStoragePermissionGranted()) {
-            binding.switchCamera.isChecked = true
-        }
+//        if (isStoragePermissionGranted()) {
+//            binding.switchCamera.isChecked = true
+//        }
     }
 
     private fun isDeviceAdminEnabled(): Boolean {

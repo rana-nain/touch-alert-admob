@@ -3,6 +3,8 @@ package com.appscentric.donot.touch.myphone.antitheft.utils
 object Constants {
     var SHOW_APP_OPEN = true
 
+    const val STORAGE_FOLDER_NAME = "TouchAlertApp"
+
     const val EVENT_DASHBOARD_SETTINGS = "settings_opened"
     const val EVENT_DASHBOARD_WALLPAPER = "wallpaper_opened"
     const val EVENT_DASHBOARD_PREMIUM = "premium_opened"

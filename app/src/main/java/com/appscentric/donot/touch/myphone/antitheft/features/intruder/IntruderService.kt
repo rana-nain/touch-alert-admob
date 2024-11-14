@@ -3,6 +3,7 @@ package com.appscentric.donot.touch.myphone.antitheft.features.intruder
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
+import android.os.Environment
 import android.util.Log
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -11,13 +12,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleService
-import androidx.room.Room
 import com.appscentric.donot.touch.myphone.antitheft.R
-import com.appscentric.donot.touch.myphone.antitheft.room.AppDatabase
-import com.appscentric.donot.touch.myphone.antitheft.room.IntruderImage
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.appscentric.donot.touch.myphone.antitheft.utils.Constants.STORAGE_FOLDER_NAME
 import java.io.File
 
 class IntruderService : LifecycleService() {
@@ -27,10 +23,15 @@ class IntruderService : LifecycleService() {
     private val notificationId = 1
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        super.onStartCommand(intent, flags, startId)
-        startForegroundService()
-        startCamera()
-        return START_STICKY // Ensure the service keeps running even if the app is killed
+        return try {
+            super.onStartCommand(intent, flags, startId)
+            startForegroundService()
+            startCamera()
+            START_STICKY
+        } catch (e: Exception) {
+            Log.e("IntruderService", "Error in onStartCommand: ${e.message}", e)
+            START_NOT_STICKY // Do not restart the service if an error occurs
+        }
     }
 
     override fun onDestroy() {
@@ -39,94 +40,101 @@ class IntruderService : LifecycleService() {
     }
 
     private fun startForegroundService() {
-        createNotificationChannel()
+        try {
+            createNotificationChannel()
 
-        val notification = NotificationCompat.Builder(this, notificationChannelId)
-            .setContentTitle("Intruder Selfie Service")
-            .setContentText("Monitoring for intruders")
-            .setSmallIcon(R.drawable.logo)
-            .build()
+            Log.d("IntruderService", "Starting foreground service with notification.")
+            val notification = NotificationCompat.Builder(this, notificationChannelId)
+                .setContentTitle("Intruder Selfie Service")
+                .setContentText("Monitoring for intruders")
+                .setSmallIcon(R.drawable.logo)
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .build()
 
-        startForeground(notificationId, notification)
+            Log.d("IntruderService", "Posting foreground notification.")
+            startForeground(notificationId, notification)
+        } catch (e: Exception) {
+            Log.e("IntruderService", "Error starting foreground service: ${e.message}", e)
+        }
     }
 
     private fun createNotificationChannel() {
-        val channel = NotificationChannel(
-            notificationChannelId,
-            "Intruder Selfie Service",
-            NotificationManager.IMPORTANCE_LOW
-        ).apply {
-            description = "Service to monitor and capture intruder selfies"
+        try {
+            val channel = NotificationChannel(
+                notificationChannelId,
+                "Intruder Selfie Service",
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                description = "Service to monitor and capture intruder selfies"
+            }
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(channel)
+            Log.d("IntruderService", "Notification channel created.")
+        } catch (e: Exception) {
+            Log.e("IntruderService", "Error creating notification channel: ${e.message}", e)
         }
-        val notificationManager = getSystemService(NotificationManager::class.java)
-        notificationManager?.createNotificationChannel(channel)
     }
 
     private fun startCamera() {
-        Log.d("TAG_DEBUG", "startCamera: Initializing camera")
+        try {
+            Log.d("IntruderService", "Initializing camera.")
+            val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+            cameraProviderFuture.addListener({
+                try {
+                    val cameraProvider = cameraProviderFuture.get()
+                    val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
-        cameraProviderFuture.addListener({
-            val cameraProvider = cameraProviderFuture.get()
+                    imageCapture = ImageCapture.Builder()
+                        .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+                        .build()
 
-            val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
-
-            imageCapture = ImageCapture.Builder()
-                .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                .build()
-
-            cameraProvider.unbindAll()
-            cameraProvider.bindToLifecycle(
-                this,
-                cameraSelector,
-                imageCapture
-            )
-
-            captureImage()
-
-        }, ContextCompat.getMainExecutor(this))
+                    cameraProvider.unbindAll()
+                    cameraProvider.bindToLifecycle(this, cameraSelector, imageCapture)
+                    captureImage()
+                } catch (e: Exception) {
+                    Log.e("IntruderService", "Error initializing camera: ${e.message}", e)
+                    stopSelf() // Stop service on camera initialization failure
+                }
+            }, ContextCompat.getMainExecutor(this))
+        } catch (e: Exception) {
+            Log.e("IntruderService", "Error setting up camera provider: ${e.message}", e)
+            stopSelf()
+        }
     }
 
     private fun captureImage() {
-        // Ensure imageCapture is not null
-        imageCapture?.let { imageCapture ->
+        try {
+            Log.d("IntruderService", "Capturing image.")
 
-            val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "app_database")
-                .build()
+            imageCapture?.let { imageCapture ->
+                val downloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                val appFolder = File(downloadsFolder, STORAGE_FOLDER_NAME)
 
-            // Create a file to save the image
-            val appFolder = File(getExternalFilesDir(null), "MyAppFolder")
-            if (!appFolder.exists()) {
-                appFolder.mkdirs()
-            }
+                if (!appFolder.exists()) {
+                    appFolder.mkdirs()
+                }
 
-            val photoFile = File(appFolder, "intruder_${System.currentTimeMillis()}.jpg")
+                val photoFile = File(appFolder, "intruder_${System.currentTimeMillis()}.jpg")
+                val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
-            // Set up image capture metadata
-            val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
-
-            // Capture image and save it to the specified location
-            imageCapture.takePicture(outputOptions, ContextCompat.getMainExecutor(this),
-                object : ImageCapture.OnImageSavedCallback {
-                    override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                        Log.d("TAG_DEBUG", "Image saved at: ${photoFile.absolutePath}")
-
-                        val capturedAt = System.currentTimeMillis()
-                        val intruderImage = IntruderImage(imagePath = photoFile.absolutePath, capturedAt = capturedAt)
-
-                        CoroutineScope(Dispatchers.IO).launch {
-                            db.intruderImageDao().insertImage(intruderImage)
+                imageCapture.takePicture(outputOptions, ContextCompat.getMainExecutor(this),
+                    object : ImageCapture.OnImageSavedCallback {
+                        override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                            Log.d("IntruderService", "Image saved at: ${photoFile.absolutePath}")
+                            stopSelf()
                         }
 
-                        stopSelf()
+                        override fun onError(exception: ImageCaptureException) {
+                            Log.e("IntruderService", "Image capture failed: ${exception.message}", exception)
+                            stopSelf()
+                        }
                     }
-
-                    override fun onError(exception: ImageCaptureException) {
-                        Log.e("TAG_DEBUG", "Image capture failed: ${exception.message}", exception)
-                        stopSelf()
-                    }
-                })
+                )
+            } ?: Log.e("IntruderService", "ImageCapture instance is null.")
+        } catch (e: Exception) {
+            Log.e("IntruderService", "Error capturing image: ${e.message}", e)
+            stopSelf()
         }
     }
 }

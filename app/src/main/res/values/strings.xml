@@ -189,4 +189,6 @@
     <string name="allow_access">Allow access</string>
     <string name="your_privacy_and_security_are_our_top_priorities">Your privacy and security are our top priorities. We don’t collect or store your data, it\'s only used to alert you to potential security threats and safeguard your device.</string>
     <string name="anti_theft_cannot_monitor_failed_attempts">Anti-Theft cannot monitor failed attempts or capture intruder selfies without admin access, limiting its ability to fully secure your device. For complete protection, please enable admin access.</string>
+    <string name="clear_all">Clear All</string>
+    <string name="close">close</string>
 </resources>
