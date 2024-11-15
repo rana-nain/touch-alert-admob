@@ -25,6 +25,7 @@ class IntruderService : LifecycleService() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         return try {
             super.onStartCommand(intent, flags, startId)
+            Log.d("IntruderService", "onStartCommand: Called True")
             startForegroundService()
             startCamera()
             START_STICKY

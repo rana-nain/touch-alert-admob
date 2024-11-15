@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/round_keyboard_backspace"
         app:navigationIconTint="@color/white"
-        app:title="Intruder Selfie"
+        app:title="@string/intruder_selfie"
         app:titleTextColor="@color/white" />
 
     <com.google.android.material.card.MaterialCardView
@@ -128,15 +128,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_70sdp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textViewOverlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_bold"
-                android:padding="@dimen/_5sdp"
-                android:text="Remove Admin’s Permission"
+                android:text="@string/remove_admin_s_permission"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -150,10 +149,10 @@
                 android:id="@+id/textViewOverlayDetails"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/inter_medium"
-                android:gravity="center|start"
-                android:paddingStart="@dimen/_5sdp"
-                android:text="By removing this permission limits the app’s ability to capture intruder activity."
+                android:gravity="start"
+                android:text="@string/by_removing_this_permission_limits_the_app_s_ability_to_capture_intruder_activity"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -232,14 +231,47 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout222"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/imageView622"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+            android:contentDescription="@string/todo"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_dot" />
+
+        <TextView
+            android:id="@+id/textView2722"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_5sdp"
+            android:text="@string/intruder_selfiee_capture_only_works_on_pin_and_passcode_enabled_devices"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_clear_all"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
-        android:visibility="invisible"
         android:text="@string/clear_all"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -255,7 +287,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout222" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

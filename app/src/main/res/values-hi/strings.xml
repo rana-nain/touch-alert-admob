@@ -141,5 +141,31 @@
     <string name="app_settings">ऐप सेटिंग</string>
     <string name="update_clap_detection_state">क्लैप डिटेक्शन स्टेट अपडेट करें</string>
     <string name="are_you_sure_you_want_to_enable_clap_detection_mode">क्या आप वाकई क्लैप डिटेक्शन मोड को सक्षम करना चाहते हैं</string>
+    <string name="your_privacy_and_security_are_our_top_priorities">आपकी गोपनीयता और सुरक्षा हमारी सर्वोच्च प्राथमिकताएँ हैं। हम आपका डेटा एकत्र या संग्रहीत नहीं करते हैं, इसका उपयोग केवल आपको संभावित सुरक्षा खतरों के प्रति सचेत करने और आपके डिवाइस की सुरक्षा करने के लिए किया जाता है।</string>
+    <string name="anti_theft_cannot_monitor_failed_attempts">एंटी-थेफ्ट विफल प्रयासों की निगरानी नहीं कर सकता है या व्यवस्थापक पहुँच के बिना घुसपैठिए की सेल्फी कैप्चर नहीं कर सकता है, जिससे आपके डिवाइस को पूरी तरह से सुरक्षित करने की इसकी क्षमता सीमित हो जाती है। पूर्ण सुरक्षा के लिए, कृपया व्यवस्थापक पहुँच सक्षम करें।</string>
+    <string name="clear_all">सब साफ़ करें</string>
+    <string name="close">बंद करें</string>
+    <string name="intruder_selfie">घुसपैठिए की सेल्फी</string>
+    <string name="remove_admin_s_permission">एडमिन की अनुमति हटाएँ</string>
+    <string name="by_removing_this_permission_limits_the_app_s_ability_to_capture_intruder_activity">इस अनुमति को हटाने से ऐप की घुसपैठिए की गतिविधि को कैप्चर करने की क्षमता सीमित हो जाती है।</string>
+    <string name="get_a_selfie_snapshot">बिना अनुमति के आपके फ़ोन को अनलॉक करने का प्रयास करने वाले किसी भी व्यक्ति का सेल्फी स्नैपशॉट प्राप्त करें।</string>
+    <string name="you_can_review_all_unauthorized">आप सुरक्षित फ़ोल्डर में सभी अनधिकृत प्रयासों की समीक्षा कर सकते हैं, और वास्तविक समय में संभावित खतरों के बारे में आपको सूचित करने के लिए तत्काल अलर्ट भी सेट कर सकते हैं।</string>
+    <string name="images_history">घुसपैठियों का इतिहास</string>
+    <string name="screen_overlay">स्क्रीन ओवरले</string>
+    <string name="granting_admin_rights_enable">व्यवस्थापक अधिकार प्रदान करने से एंटी-थेफ्ट विफल लॉक स्क्रीन प्रयासों की निगरानी करने और घुसपैठिए की सेल्फी कैप्चर करने में सक्षम हो जाता है, जिससे अनधिकृत पहुँच के विरुद्ध आपके डिवाइस की सुरक्षा बढ़ जाती है।</string>
+    <string name="enable_intruder_detection_and_keep_your_device">सुरक्षात्मक सुविधाओं को सक्रिय करने के लिए व्यवस्थापक पहुँच प्रदान करके घुसपैठिए का पता लगाना सक्षम करें और अपने डिवाइस को सुरक्षित रखें।</string>
+    <string name="allow_access">पहुँच की अनुमति दें</string>
+    <string name="details">विवरण</string>
+    <string name="note">नोट</string>
+    <string name="need_to_overlay_screen">स्क्रीन ओवरले करने की आवश्यकता है</string>
+    <string name="admin">व्यवस्थापक</string>
+    <string name="need_to_access_lock_information">लॉक जानकारी तक पहुँचने की आवश्यकता है</string>
+    <string name="camera_amp_storage">कैमरा और स्टोरेज</string>
+    <string name="need_to_access_camera_and_nstorage_permission">कैमरा और स्टोरेज तक पहुंच की अनुमति की आवश्यकता है</string>
+    <string name="delete_intruder_selfie_images">घुसपैठिए द्वारा कैप्चर की गई छवियों को हटाएं</string>
+    <string name="are_you_sure_you_want_to_delete_all_intruder_images">क्या आप वाकई घुसपैठिए की सभी छवियों को हटाना चाहते हैं</string>
+    <string name="update_intruder_selfie_state">घुसपैठिए सेल्फी स्थिति अपडेट करें</string>
+    <string name="are_you_sure_you_want_to_enable_intruder_selfie_mode">क्या आप वाकई घुसपैठिए सेल्फी मोड सक्षम करना चाहते हैं?</string>
+    <string name="intruder_selfiee_capture_only_works_on_pin_and_passcode_enabled_devices">" घुसपैठिया सेल्फी कैप्चर केवल पिन और पासकोड सक्षम उपकरणों पर काम करता है"</string>
 
 </resources>

@@ -45,10 +45,6 @@ class PermissionsBottomSheetFragment : BottomSheetDialogFragment() {
                 this@PermissionsBottomSheetFragment.dismiss()
             } else {
                 binding.switchDeviceAdmin.isChecked = false
-
-                val allowFragment = PermissionAllowPopBottomFragment()
-                allowFragment.show(parentFragmentManager, "PermissionAllowPopBottomFragment")
-
                 this@PermissionsBottomSheetFragment.dismiss()
             }
         }
@@ -105,9 +101,18 @@ class PermissionsBottomSheetFragment : BottomSheetDialogFragment() {
 
         // Check if Camera permission is granted
         val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES)
+            // Android 13+ requires CAMERA and READ_MEDIA_IMAGES for image access
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_MEDIA_IMAGES
+            )
         } else {
-            arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+            // Android 12 and below require CAMERA, READ_EXTERNAL_STORAGE, and WRITE_EXTERNAL_STORAGE
+            arrayOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
         }
 
         // Check if both Camera and storage permissions are granted
@@ -137,20 +142,6 @@ class PermissionsBottomSheetFragment : BottomSheetDialogFragment() {
         return Settings.canDrawOverlays(requireContext())
     }
 
-    private fun isStoragePermissionGranted(): Boolean {
-        val storagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            Manifest.permission.READ_MEDIA_IMAGES
-        } else {
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        }
-
-        // Compare permission status to PackageManager.PERMISSION_GRANTED
-        return ContextCompat.checkSelfPermission(
-            requireContext(),
-            storagePermission
-        ) == PackageManager.PERMISSION_GRANTED
-    }
-
     private fun requestCameraPermission() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED
@@ -159,8 +150,15 @@ class PermissionsBottomSheetFragment : BottomSheetDialogFragment() {
                 requireActivity(),
                 arrayOf(
                     Manifest.permission.CAMERA,
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) Manifest.permission.READ_MEDIA_IMAGES else Manifest.permission.READ_EXTERNAL_STORAGE
-                ),
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        Manifest.permission.READ_MEDIA_IMAGES
+                    } else {
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    },
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    } else null // No need for WRITE_EXTERNAL_STORAGE on Android 13+
+                ).filterNotNull().toTypedArray(),
                 REQUEST_CODE_CAMERA
             )
         }
@@ -170,18 +168,26 @@ class PermissionsBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun requestStoragePermission() {
-        val storagePermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            Manifest.permission.READ_MEDIA_IMAGES
+        val storagePermissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Android 13+ requires only READ_MEDIA_IMAGES for image access
+            arrayOf(Manifest.permission.READ_MEDIA_IMAGES)
         } else {
-            Manifest.permission.READ_EXTERNAL_STORAGE
+            // Android 12 and below require both READ and WRITE external storage permissions
+            arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
         }
 
-        if (ContextCompat.checkSelfPermission(requireContext(), storagePermission)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
+        // Check if any of the required permissions are not granted
+        val allPermissionsGranted = storagePermissions.all { permission ->
+            ContextCompat.checkSelfPermission(requireContext(), permission) == PackageManager.PERMISSION_GRANTED
+        }
+
+        if (!allPermissionsGranted) {
             ActivityCompat.requestPermissions(
                 requireActivity(),
-                arrayOf(storagePermission),
+                storagePermissions,
                 REQUEST_CODE_STORAGE
             )
         }
@@ -198,21 +204,26 @@ class PermissionsBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun enableDeviceAdmin() {
-        val devicePolicyManager = requireContext().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
 
-        // Check if the device admin is already active
-        if (!devicePolicyManager.isAdminActive(deviceAdminComponent)) {
-            val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN).apply {
-                putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, deviceAdminComponent)
-                putExtra(
-                    DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                    "Enable Device Admin to monitor wrong password attempts."
-                )
-            }
-            deviceAdminLauncher.launch(intent)
-        } else {
-            Toast.makeText(requireContext(), "Device Admin is already enabled", Toast.LENGTH_SHORT).show()
-        }
+        val allowFragment = PermissionAllowPopBottomFragment()
+        allowFragment.show(parentFragmentManager, "PermissionAllowPopBottomFragment")
+
+
+//        val devicePolicyManager = requireContext().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+//
+//        // Check if the device admin is already active
+//        if (!devicePolicyManager.isAdminActive(deviceAdminComponent)) {
+//            val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN).apply {
+//                putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, deviceAdminComponent)
+//                putExtra(
+//                    DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+//                    "Enable Device Admin to monitor wrong password attempts."
+//                )
+//            }
+//            deviceAdminLauncher.launch(intent)
+//        } else {
+//            Toast.makeText(requireContext(), "Device Admin is already enabled", Toast.LENGTH_SHORT).show()
+//        }
     }
 
     override fun onRequestPermissionsResult(

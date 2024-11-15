@@ -179,10 +179,9 @@
     <string name="update_clap_detection_state">Update Clap Detection State</string>
     <string name="are_you_sure_you_want_to_enable_clap_detection_mode">Are you sure you want to enable Clap Detection mode?</string>
 
-    <string name="intruder_nselfie">Intruder\nSelfie</string>
     <string name="get_a_selfie_snapshot">Get a selfie snapshot of anyone attempting to unlock your phone without permission.</string>
     <string name="you_can_review_all_unauthorized">You can review all unauthorized attempts in a secure folder, and even set up instant alerts to notify you of potential threats in real time.</string>
-    <string name="images_history">Images History</string>
+    <string name="images_history">intruder History</string>
     <string name="screen_overlay">Screen Overlay</string>
     <string name="granting_admin_rights_enable">Granting admin rights enables Anti-theft to monitor failed lock screen attempts and capture intruder selfies, enhancing your device\'s security against unauthorized access.</string>
     <string name="enable_intruder_detection_and_keep_your_device">Enable intruder detection and keep your device secure by granting admin access to activate protective features.</string>
@@ -191,4 +190,19 @@
     <string name="anti_theft_cannot_monitor_failed_attempts">Anti-Theft cannot monitor failed attempts or capture intruder selfies without admin access, limiting its ability to fully secure your device. For complete protection, please enable admin access.</string>
     <string name="clear_all">Clear All</string>
     <string name="close">close</string>
+    <string name="intruder_selfie">Intruder Selfie</string>
+    <string name="remove_admin_s_permission">Remove Admin’s Permission</string>
+    <string name="by_removing_this_permission_limits_the_app_s_ability_to_capture_intruder_activity">By removing this permission limits the app’s ability to capture intruder activity.</string>
+    <string name="details">Details</string>
+    <string name="note">Note</string>
+    <string name="need_to_overlay_screen">Need to Overlay screen</string>
+    <string name="admin">Admin</string>
+    <string name="need_to_access_lock_information">Need to access lock information</string>
+    <string name="camera_amp_storage"><![CDATA[Camera & Storage]]></string>
+    <string name="need_to_access_camera_and_nstorage_permission">Need to access camera and\nstorage permission</string>
+    <string name="delete_intruder_selfie_images">Delete Intruder Selfie Images</string>
+    <string name="are_you_sure_you_want_to_delete_all_intruder_images">Are you sure you want to delete all Intruder Images?</string>
+    <string name="update_intruder_selfie_state">Update Intruder Selfie State</string>
+    <string name="are_you_sure_you_want_to_enable_intruder_selfie_mode">Are you sure you want to enable Intruder Selfie mode?</string>
+    <string name="intruder_selfiee_capture_only_works_on_pin_and_passcode_enabled_devices">Intruder Selfiee Capture Only Works on Pin And Passcode Enabled Devices</string>
 </resources>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".features.intruder.dialog.PermissionsBottomSheetFragment">
 
     <com.google.android.material.textview.MaterialTextView
@@ -53,7 +53,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_bold"
-                android:padding="@dimen/_5sdp"
                 android:text="@string/screen_overlay"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
@@ -70,8 +69,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center|start"
-                android:paddingStart="@dimen/_5sdp"
-                android:text="Need to Overlay screen"
+                android:text="@string/need_to_overlay_screen"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -125,8 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_bold"
-                android:padding="@dimen/_5sdp"
-                android:text="Admin"
+                android:text="@string/admin"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -142,13 +139,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center|start"
-                android:paddingStart="@dimen/_9sdp"
-                android:text="Need to access lock information"
+                android:text="@string/need_to_access_lock_information"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewStatusTitle"
-                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textViewStatusTitle"
                 app:layout_constraintTop_toBottomOf="@+id/textViewStatusTitle"
                 app:layout_constraintVertical_bias="0.0" />
@@ -190,15 +186,14 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_70sdp">
+            android:layout_height="@dimen/_80sdp">
 
             <TextView
                 android:id="@+id/textViewCameraStatusTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_bold"
-                android:padding="@dimen/_5sdp"
-                android:text="Camera"
+                android:text="@string/camera_amp_storage"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -214,13 +209,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center|start"
-                android:paddingStart="@dimen/_9sdp"
-                android:text="Need to access camera permission"
+                android:text="@string/need_to_access_camera_and_nstorage_permission"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewCameraStatusTitle"
-                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textViewCameraStatusTitle"
                 app:layout_constraintTop_toBottomOf="@+id/textViewCameraStatusTitle"
                 app:layout_constraintVertical_bias="0.0" />

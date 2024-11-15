@@ -357,7 +357,7 @@
                     android:layout_margin="@dimen/_7sdp"
                     android:fontFamily="@font/inter_medium"
                     android:padding="@dimen/_5sdp"
-                    android:text="@string/intruder_nselfie"
+                    android:text="@string/intruder_selfie"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />
 
@@ -458,7 +458,7 @@
                     android:layout_margin="@dimen/_7sdp"
                     android:fontFamily="@font/inter_bold"
                     android:padding="@dimen/_5sdp"
-                    android:text="@string/don_t_touch_nwallpapers"
+                    android:text="@string/wi_fi_detection"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp" />
 

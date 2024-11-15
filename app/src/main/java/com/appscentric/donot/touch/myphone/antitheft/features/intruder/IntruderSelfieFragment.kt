@@ -25,6 +25,7 @@ import com.appscentric.donot.touch.myphone.antitheft.features.intruder.dialog.Pe
 import com.appscentric.donot.touch.myphone.antitheft.manager.PreferencesManager
 import com.appscentric.donot.touch.myphone.antitheft.utils.Utility.Companion.isServiceRunning
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -64,7 +65,9 @@ class IntruderSelfieFragment : DialogFragment(), CapturedImageAdapter.OnImageCli
         )
 
         binding.switchScreenAdmin.setOnCheckedChangeListener { _, isChecked ->
-            if (!isChecked) disableDeviceAdmin()
+            if (!isChecked) {
+                disableDeviceAdmin()
+            }
         }
 
         binding.switchSelfieMode.setOnCheckedChangeListener { _, isChecked ->
@@ -74,17 +77,17 @@ class IntruderSelfieFragment : DialogFragment(), CapturedImageAdapter.OnImageCli
                 isServiceRunning(requireContext(), IntruderService::class.java)
             if (!isServiceRunning && isChecked) {
                 MaterialAlertDialogBuilder(requireContext())
-                    .setTitle("Update Intruder Selfie State")
-                    .setMessage("Are you sure you want to enable Intruder Selfie mode?")
+                    .setTitle(getString(R.string.update_intruder_selfie_state))
+                    .setMessage(getString(R.string.are_you_sure_you_want_to_enable_intruder_selfie_mode))
                     .setCancelable(false)
                     .setPositiveButton(getString(R.string.yes)) { _, _ ->
 
-                        if (arePermissionsGranted()){
+                        if (arePermissionsGranted()) {
                             updateChargingState(
                                 binding,
                                 true
                             )
-                        }else{
+                        } else {
                             showPermissionBottomSheetDialog()
                             binding.switchSelfieMode.isChecked = false
                         }
@@ -102,8 +105,8 @@ class IntruderSelfieFragment : DialogFragment(), CapturedImageAdapter.OnImageCli
 
         binding.btnClearAll.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Delete Intruder Selfie Images")
-                .setMessage("Are you sure you want to delete all Intruder Images?")
+                .setTitle(getString(R.string.delete_intruder_selfie_images))
+                .setMessage(getString(R.string.are_you_sure_you_want_to_delete_all_intruder_images))
                 .setCancelable(false)
                 .setPositiveButton(getString(R.string.yes)) { _, _ ->
                     imageViewModel.clearImages()
@@ -130,7 +133,7 @@ class IntruderSelfieFragment : DialogFragment(), CapturedImageAdapter.OnImageCli
         binding.textViewStatusTitle.text =
             if (isChecked) getString(R.string.current_status_on) else getString(R.string.current_status_off)
 
-        binding.cardView.setCardBackgroundColor (
+        binding.cardView.setCardBackgroundColor(
             ColorStateList.valueOf(
                 ContextCompat.getColor(
                     requireContext(),
@@ -205,8 +208,11 @@ class IntruderSelfieFragment : DialogFragment(), CapturedImageAdapter.OnImageCli
             // Remove the device admin
             devicePolicyManager.removeActiveAdmin(deviceAdminComponent)
 
-            // After deactivating, update the button visibility
-            checkAndDisplayDeviceAdminStatus()
+            with(binding) {
+                adminCardView.visibility = View.GONE
+                switchScreenAdmin.isChecked = false
+                switchSelfieMode.isChecked = false
+            }
         }
     }
 
@@ -214,18 +220,31 @@ class IntruderSelfieFragment : DialogFragment(), CapturedImageAdapter.OnImageCli
         return Settings.canDrawOverlays(requireContext())
     }
 
-
     private fun arePermissionsGranted(): Boolean {
-        val cameraPermission = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        val cameraPermission = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
         val readMediaPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
         } else {
-            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    ) == PackageManager.PERMISSION_GRANTED
         }
 
         val screenOverlayPermission = isScreenOverlayPermissionGranted()
 
-        val devicePolicyManager = requireContext().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+        val devicePolicyManager =
+            requireContext().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         val isDeviceAdminActive = devicePolicyManager.isAdminActive(deviceAdminComponent)
 
         return cameraPermission && readMediaPermission && screenOverlayPermission && isDeviceAdminActive
@@ -238,5 +257,10 @@ class IntruderSelfieFragment : DialogFragment(), CapturedImageAdapter.OnImageCli
         fragmentManager.let {
             fragment.show(it, "FullScreenImageDialogFragment")
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        lifecycleScope.cancel()  // Cancel all coroutines within the fragment's lifecycle scope
     }
 }
